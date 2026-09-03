@@ -202,11 +202,13 @@
         <p class="quiet" data-sc-cue="0.08" data-sc-rise="0">Every conversion read. Your rate set
         beside the interbank rate for the same day. The difference comes back as a figure. No fee,
         and the report is allowed to say it is not worth a conversation.</p>
+        <p class="quiet" style="margin-top:18px;font-size:.95rem">Or nothing leaves your building. Book twenty minutes, open one statement on your own screen, and we do the comparison while you watch. You keep the file.</p>
         <form class="form" data-sc-cue="0.1" data-sc-rise="0" onsubmit="event.preventDefault();document.getElementById('sent').hidden=false;">
           <div><label for="n">Name</label><input id="n" name="name" autocomplete="name" required></div>
           <div><label for="e">Work email</label><input id="e" name="email" type="email" autocomplete="email" required></div>
-          <div><label for="f">One month of statements</label>
-            <div class="drop"><input id="f" name="statement" type="file" accept=".pdf,.csv,.xlsx,.ofx"></div></div>
+          <div><label for="f">One month of statements, optional</label>
+            <div class="drop"><input id="f" name="statement" type="file" accept=".pdf,.csv,.xlsx,.ofx"></div>
+            <p class="quiet" style="font-size:.86rem;margin-top:8px">Leave this empty and we will come back to arrange the twenty minutes instead.</p></div>
           <button class="btn" type="submit">Send one month of statements</button>
           <p class="terms" id="sent" hidden>This is a demonstration page. Nothing was uploaded and
           nothing was sent.</p>
