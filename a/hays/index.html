@@ -135,6 +135,18 @@
   .calcout{border-top:1px solid #23252B;padding-top:22px;display:grid;gap:4px}
   .calclab{font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--sc-ink-soft)}
   .calcbig{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:900;letter-spacing:-.04em;color:var(--sc-accent);line-height:1}
+
+  .figure2{font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:900;color:var(--sc-accent);
+           letter-spacing:-.03em;margin:10px 0 4px}
+  .box--hero{border-color:var(--sc-accent);background:rgba(111,160,255,.05)}
+  .tbl{margin-top:26px;border:1px solid #23252B;border-radius:14px;overflow:hidden}
+  .tbl__h,.tbl__r{display:grid;grid-template-columns:minmax(150px,1fr) 2fr;gap:18px;
+                  padding:14px 20px;font-size:.95rem}
+  .tbl__h{background:var(--sc-surface);font-weight:800;font-size:.74rem;letter-spacing:.13em;
+          text-transform:uppercase;color:var(--sc-ink-soft)}
+  .tbl__r{border-top:1px solid #1B1D22;color:#C3C8D0}
+  .tbl__r span:first-child{color:var(--sc-ink);font-weight:700}
+  @media (max-width:700px){ .tbl__h,.tbl__r{grid-template-columns:1fr;gap:4px} }
   @media (max-width:820px){ .boxes,.boxes--3{grid-template-columns:1fr} }
   @media (max-width:820px){
     .two{grid-template-columns:1fr;min-height:auto}
@@ -289,6 +301,45 @@
     </div>
   </section>
 
+  <!-- 5c · WHAT HAS ALREADY BEEN TRIED: Q3 of the Mind-Reader Survey, never used until now. -->
+  <section class="sc-section">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <p class="tag">Four routes, and what each one leaves untouched</p>
+        <h2 class="h2">This is not a list of things you have not thought of.</h2>
+        <p class="p">Every one of these is sensible, most large groups run two or three of them at
+        once, and not one of them produces the number. That is the point of the section: the gap is
+        not a gap in judgement, it is a gap in measurement.</p>
+        <div class="tbl">
+          <div class="tbl__h"><span>The route</span><span>What it does, and what it leaves</span></div>
+          <div class="tbl__r"><span>Forward contracts through the relationship bank</span>
+            <span>Fixes the rate you will get, which is real protection. <b>The spread stays inside
+            the rate</b>, quoted rather than shown, so there is still no figure and no benchmark to
+            challenge it against.</span></div>
+          <div class="tbl__r"><span>Constant currency reporting</span>
+            <span>Shows the board the business underneath the currency, which is why every one of
+            your peers does it. <b>It is a disclosure, not a remedy.</b> It changes none of the cash
+            that already left.</span></div>
+          <div class="tbl__r"><span>Natural hedging, matching flows</span>
+            <span>Genuinely reduces the exposure by netting receipts against payments in the same
+            currency. <b>It does not price the conversions still made</b>, and in a business with
+            four reporting regions there are always plenty.</span></div>
+          <div class="tbl__r"><span>A central treasury function setting policy</span>
+            <span>Controls what is hedged and who you deal with, which your own report says you have.
+            <b>Policy is not price.</b> It governs the decision and never measures the execution.</span></div>
+        </div>
+        <p class="p"><b>The pattern across all four is the same.</b> Each one addresses the
+        <i>rate</i>. None of them addresses the <i>spread on the conversions that happen anyway</i>,
+        which is the only part of this that is both measurable and inside your control.</p>
+        <h3 class="h3">And one route nobody lists</h3>
+        <p class="p">Not converting at all. Holding the currency until you choose to move it turns a
+        forced conversion into an optional one, and an optional conversion is one you can time. That
+        is the quiet thing a multi-currency account does, and it is worth more than the headline
+        rate on most treasury books.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 5b · COST OF INACTION: the section the page was missing entirely. -->
   <section class="sc-section">
     <div class="sc-wrap">
@@ -348,29 +399,44 @@
     </div>
   </section>
 
-  <!-- 7 · PROOF: flow + reveal. Enterprise only. -->
+  <!-- 7 · PROOF: fuller. Enterprise only, and honest about which proof is which. -->
   <section class="sc-section" data-sc-act="flow">
     <div class="sc-wrap">
-      <div class="proof">
-        <div data-sc-reveal="left" data-sc-reveal-at="0.14 0.6" class="proofcard">
-          <p class="figure" style="font-size:clamp(2.6rem,5vw,4.4rem)" data-sc-count="0 22">22</p>
-          <p class="quiet" style="margin-top:6px">countries. Lyca Mobile runs cash flow across every
-          one of them.</p>
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <p class="tag">Who else is at this scale</p>
+        <h2 class="h2">One of these is about currency. The others are about size.</h2>
+        <p class="p">Said plainly, because a page that presents every logo as the same kind of
+        evidence is not worth reading. Only the first of these is a treasury story.</p>
+        <div class="boxes boxes--3">
+          <div class="box box--hero"><h3>Lyca Mobile</h3>
+            <p class="figure2">22 countries</p>
+            <p>Telecoms, enterprise, London. Revolut's own case study says the company
+            <b>&ldquo;significantly reduced its reliance on third-party currency exchange
+            providers&rdquo;</b>, and that same-day payments to service providers became routine
+            across all 22.</p>
+            <p class="rem">This is the currency proof, and it is the only one on the page.</p></div>
+          <div class="box"><h3>Aer Lingus</h3><p class="figure2">98.5%</p>
+            <p>Authorisation rate through Revolut Pay, with cart abandonment below 10% and next-day
+            settlement. An airline's payments stack, not its treasury.</p>
+            <p class="rem">Evidence of scale, not of FX.</p></div>
+          <div class="box"><h3>Wizz Air</h3><p class="figure2">CFO</p>
+            <p>Their Chief Financial Officer is quoted on Revolut's own site about Revolut Pay and
+            multi-currency payment at the point of sale.</p>
+            <p class="rem">Evidence that a listed airline's CFO put their name to it.</p></div>
         </div>
-        <div class="sc-stack" data-sc-in data-sc-stagger="70">
-          <p class="tag">Somebody at this scale already did it</p>
-          <p class="p">Revolut's own case study says Lyca Mobile <b>&ldquo;significantly reduced its
-          reliance on third-party currency exchange providers&rdquo;</b>, and that same-day payments
-          to service providers became routine.</p>
-          <p class="p quote">&ldquo;Revolut Business is pivotal from a banking perspective, providing
-          us with the flexibility, speed, and personalised support we need to grow and scale our
-          business.&rdquo;<span class="cite">Amit Chaudhary, Head of Treasury, Lyca Mobile.
-          Published by Revolut.</span></p>
-          <p class="p small">Revolut Bank UK Ltd is registered in England and Wales, number
-          12871051, authorised by the Prudential Regulation Authority and regulated by the Financial
-          Conduct Authority and the Prudential Regulation Authority. Financial Services Register
-          number 981170.</p>
-        </div>
+        <p class="p quote">&ldquo;Revolut Business is pivotal from a banking perspective, providing
+        us with the flexibility, speed, and personalised support we need to grow and scale our
+        business.&rdquo;<span class="cite">Amit Chaudhary, Head of Treasury, Lyca Mobile. Published
+        by Revolut. This is the same seat as yours.</span></p>
+        <h3 class="h3">And the part that answers the real objection</h3>
+        <p class="p">The objection is never the rate. It is whether this is a bank. <b>Revolut Bank
+        UK Ltd is registered in England and Wales, number 12871051, authorised by the Prudential
+        Regulation Authority and regulated by the Financial Conduct Authority and the Prudential
+        Regulation Authority, Financial Services Register number 981170.</b> That entity is named on
+        every page of their own site and it is the one holding the money.</p>
+        <p class="p small">Revolut also publish that they power over 800,000 businesses globally and
+        that around 30,000 join each month. Those are their figures about themselves, quoted with
+        their qualifiers, and neither is a claim about what would happen at Hays.</p>
       </div>
     </div>
   </section>
@@ -414,6 +480,63 @@
         <p class="p">No fee, and no time from your team beyond sending one file. You do not have to
         learn how interbank pricing works, brief anybody, or build a comparison. That is the whole
         job and it is ours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8b · WHAT THE REPORT LOOKS LIKE: proof of rigour, move 10. -->
+  <section class="sc-section">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <p class="tag">Proof of rigour</p>
+        <h2 class="h2">What the report actually looks like.</h2>
+        <p class="p">Not a deck. A workbook and a one page summary. The workbook is the part that
+        matters, because it is the part your own team can check and rerun.</p>
+        <div class="tbl">
+          <div class="tbl__h"><span>Column</span><span>What is in it</span></div>
+          <div class="tbl__r"><span>Timestamp</span><span>The date and hour the conversion executed, from your own record</span></div>
+          <div class="tbl__r"><span>Pair and direction</span><span>EUR to GBP, AUD to GBP, and which way the money went</span></div>
+          <div class="tbl__r"><span>Amount</span><span>In the source currency, as booked</span></div>
+          <div class="tbl__r"><span>Your rate</span><span>The rate you were actually given</span></div>
+          <div class="tbl__r"><span>Interbank at that hour</span><span>The mid-market rate at the same timestamp, not a daily average</span></div>
+          <div class="tbl__r"><span>Spread</span><span>The difference, in basis points and in the source currency</span></div>
+          <div class="tbl__r"><span>Running total</span><span>So the month adds up in front of you</span></div>
+        </div>
+        <p class="p"><b>Why the timestamp matters more than anything else here.</b> Comparing an
+        executed rate to a daily average is the usual way this is done and it is wrong in both
+        directions: it flatters a bad conversion made in a quiet hour and it punishes a good one
+        made on a moving day. Matching to the same hour is more work and it is the only version
+        your treasury function would accept.</p>
+        <p class="p small">The summary page carries four things: the month's total in basis points
+        and in pounds, the three pairs it concentrates in, the single worst conversion, and the same
+        figure annualised on your own volume with the arithmetic shown rather than asserted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8c · WHAT HAPPENS AFTER: the three honest outcomes. -->
+  <section class="sc-section">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <p class="tag">After the fourteen days</p>
+        <h2 class="h2">Three things can happen, and two of them end here.</h2>
+        <div class="steps">
+          <div class="step"><span class="n">A</span><div><h3>It comes back under 10 basis points</h3>
+          <p>We write that down and stop. No follow-up, no sequence, no call, and nothing enters a
+          CRM. You keep the workbook. <b>This is the outcome the guarantee exists to protect</b>, and
+          if the number is small we would rather you knew than be sold to.</p></div></div>
+          <div class="step"><span class="n">B</span><div><h3>It is material and you do nothing</h3>
+          <p>Also fine, and more common than you would think, because the next move often belongs to
+          a budget cycle rather than to a decision. You keep the workbook and the method, so your
+          own team can rerun it next quarter without us and watch whether it moves.</p></div></div>
+          <div class="step"><span class="n">C</span><div><h3>It is material and you want to act</h3>
+          <p>Then the conversation is with Revolut's enterprise team, not with a form. What is on the
+          table is a custom interbank allowance set by agreement, and the usual first step is a
+          single currency pair rather than the whole treasury, so the thing can be proven on a small
+          surface before anything moves.</p></div></div>
+        </div>
+        <p class="p"><b>Nothing here obliges you to the third one.</b> The report is the deliverable
+        and it is complete on its own. That is what makes it possible to say yes to at this stage.</p>
       </div>
     </div>
   </section>
