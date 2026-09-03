@@ -69,18 +69,44 @@
   .proof{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,3vw,52px);align-items:center}
   .proofcard{border:1px solid #1B1D22;border-radius:14px;padding:clamp(22px,2.6vw,38px);background:var(--sc-surface)}
   /* ---- the collapse, and the thing that receives the yes ---- */
-  .close{padding:clamp(30px,5vw,90px);max-width:940px}
+  .close{padding:clamp(30px,5vw,90px) clamp(22px,4vw,56px);max-width:1180px;margin:0 auto}
   .form{display:grid;gap:14px;margin-top:26px;max-width:560px}
   .form label{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-ink-soft)}
   .form input{width:100%;padding:15px 16px;border-radius:10px;border:1px solid #23252B;
     background:var(--sc-surface);color:var(--sc-ink);font:inherit;font-size:1rem}
   .form input:focus-visible{outline:2px solid var(--sc-accent);outline-offset:2px;border-color:transparent}
   .drop{border:1px dashed #2E3138;border-radius:10px;padding:22px;color:var(--sc-ink-soft);font-size:.94rem}
+  .drop--hid{display:none}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  /* Two routes, one form. The route decides the button, so the button never claims
+     something the reader did not choose. A rule between them, not a box around each. */
+  .routes{display:grid;grid-template-columns:1fr 1fr;margin-top:32px;max-width:1000px;
+    border-top:1px solid #23252B}
+  .routes fieldset{border:0;padding:0;margin:0;display:contents}
+  .route{padding:24px 0;opacity:.48;transition:opacity .25s}
+  .route--b{padding-left:34px;border-left:1px solid #23252B}
+  .route.is-on{opacity:1}
+  .route input{position:absolute;width:1px;height:1px;opacity:0}
+  .form .route__t{display:flex;align-items:baseline;gap:11px;cursor:pointer;
+    font-size:1.08rem;font-weight:800;letter-spacing:-.01em;color:var(--sc-ink);
+    text-transform:none}
+  .form .route__t::before{content:"";flex:0 0 auto;width:11px;height:11px;border-radius:50%;
+    border:1px solid var(--sc-ink-soft);transform:translateY(1px)}
+  .form .route.is-on .route__t::before{background:var(--sc-accent);border-color:var(--sc-accent)}
+  .form .route input:focus-visible + .route__t{outline:2px solid var(--sc-accent);outline-offset:5px}
+  .route p{margin:11px 0 0;font-size:.95rem;line-height:1.56;color:#C3C8D0;max-width:44ch}
+  .when{margin-top:28px;padding-top:19px;border-top:1px solid #23252B;max-width:62ch;
+    font-size:1.02rem;line-height:1.56;color:#C3C8D0}
+  .when b{color:var(--sc-ink);font-weight:800}
+  @media (max-width:760px){
+    .routes{grid-template-columns:1fr}
+    .route--b{padding-left:0;border-left:0;border-top:1px solid #23252B}
+  }
   .btn{margin-top:6px;padding:16px 22px;border-radius:10px;border:0;background:var(--sc-accent);
     color:var(--sc-accent-ink);font:inherit;font-weight:800;font-size:1rem;cursor:pointer;white-space:nowrap}
   .btn:focus-visible{outline:2px solid var(--sc-ink);outline-offset:3px}
   .terms{margin-top:16px;font-size:.84rem;color:var(--sc-ink-soft);max-width:52ch}
-  .foot{margin-top:46px;padding-top:22px;border-top:1px solid #1B1D22;font-size:.76rem;
+  .foot{margin-top:92px;padding-top:22px;border-top:1px solid #1B1D22;font-size:.76rem;
     color:#6B7079;line-height:1.6;max-width:78ch}
 
   /* ---- long-form blocks. taste.md: measure 45-75ch, more space above a heading ---- */
@@ -716,17 +742,47 @@
       <div class="close">
         <p class="tag" data-sc-cue="0.04">The last thing on the page</p>
         <h2 class="lead" data-sc-cue="0.06" data-sc-rise="0">Send one month.<br>Get one figure.</h2>
-        <p class="quiet" data-sc-cue="0.08" data-sc-rise="0">Every conversion read. Your rate set
-        beside the interbank rate for the same day. The difference comes back as a figure. No fee,
-        and the report is allowed to say it is not worth a conversation.</p>
-        <p class="quiet" style="margin-top:18px;font-size:.95rem">Or nothing leaves your building. Book twenty minutes, open one statement on your own screen, and we do the comparison while you watch. You keep the file.</p>
-        <form class="form" data-sc-cue="0.1" data-sc-rise="0" onsubmit="event.preventDefault();document.getElementById('sent').hidden=false;">
-          <div><label for="n">Name</label><input id="n" name="name" autocomplete="name" required></div>
-          <div><label for="e">Work email</label><input id="e" name="email" type="email" autocomplete="email" required></div>
-          <div><label for="f">One month of statements, optional</label>
-            <div class="drop"><input id="f" name="statement" type="file" accept=".pdf,.csv,.xlsx,.ofx"></div>
-            <p class="quiet" style="font-size:.86rem;margin-top:8px">Leave this empty and we will come back to arrange the twenty minutes instead.</p></div>
-          <button class="btn" type="submit">Send one month of statements</button>
+        <p class="quiet" data-sc-cue="0.08" data-sc-rise="0">Every conversion in the month read.
+        Your rate set beside the interbank mid rate for the same day and the same amount. The
+        difference comes back as one figure per currency, with the workings attached, so your
+        financial controller can check the arithmetic line by line.</p>
+
+        <p class="when" data-sc-cue="0.09" data-sc-rise="0"><b>Fourteen days from the file
+        landing</b>, not fourteen from a kickoff call. A file sent today puts the figure on the
+        desk on <b>17 September</b>. No fee, and no call before the number exists.</p>
+
+        <form class="form" data-sc-cue="0.1" data-sc-rise="0" id="joinform"
+              onsubmit="event.preventDefault();document.getElementById('sent').hidden=false;">
+          <div class="routes">
+            <fieldset>
+              <legend class="sr">How you want it done</legend>
+              <div class="route route--a is-on">
+                <input type="radio" name="route" id="ra" value="file" checked>
+                <label class="route__t" for="ra">Send the export</label>
+                <p>One month, PDF or CSV, straight out of your banking portal. It is a statement
+                export, not access. No logins, no read only connection, no portal invitation. One
+                analyst reads it and the file is deleted the day the report goes out.</p>
+              </div>
+              <div class="route route--b">
+                <input type="radio" name="route" id="rb" value="call">
+                <label class="route__t" for="rb">Nothing leaves your building</label>
+                <p>Twenty minutes on a screen share. You open one statement on your own machine,
+                you drive, and we read the comparison out loud while you watch. You keep the file
+                and we keep nothing.</p>
+              </div>
+            </fieldset>
+          </div>
+          <div style="margin-top:30px"><label for="n">Name</label>
+            <input id="n" name="name" autocomplete="name" required></div>
+          <div><label for="e">Work email</label>
+            <input id="e" name="email" type="email" autocomplete="email" required></div>
+          <div id="filewrap"><label for="f">One month of statements</label>
+            <div class="drop"><input id="f" name="statement" type="file" accept=".pdf,.csv,.xlsx,.ofx"></div></div>
+          <button class="btn" type="submit" id="joinbtn">Send the export</button>
+          <p class="terms">It is free because it takes one analyst an afternoon, and because a
+          figure you can check beats a deck you have to believe. The report is allowed to come
+          back and say the number is too small to be worth a conversation. That happens, and it
+          ends there.</p>
           <p class="terms" id="sent" hidden>This is a demonstration page. Nothing was uploaded and
           nothing was sent.</p>
         </form>
@@ -734,10 +790,10 @@
           Produced independently as a demonstration of one to one advertising. Not affiliated
           with, endorsed by, or produced on behalf of Revolut or Hays plc. Names and marks
           belong to their owners. Figures attributed to Hays plc are taken from its own
-          published preliminary report for FY26, for the year ended 30 June 2026, and figures attributed
-          to Revolut are their own published claims quoted with their original qualifiers.
-          <strong>The offer on this page was inferred by the operator from what Revolut publishes.
-          Revolut has not agreed it and cannot be committed to it by this page.</strong>
+          published preliminary report for FY26, for the year ended 30 June 2026, and figures
+          attributed to Revolut are their own published claims quoted with their original
+          qualifiers. The offer set out here was inferred by the operator from Revolut's own
+          published terms and has not been agreed by Revolut.
           Strategy and GTM research by Jean Mundabi Fala.
         </footer>
       </div>
@@ -749,6 +805,24 @@
 <script src="scrollcraft.js"></script>
 <script>
 ScrollCraft.mount(document.body);
+
+/* The route decides the button. Point 1 of the close rebuild: a button that says
+   "send your statements" to someone who chose the screen share is a button that lies. */
+(function(){
+  var f=document.getElementById('joinform'); if(!f) return;
+  var btn=document.getElementById('joinbtn'), wrap=document.getElementById('filewrap'),
+      file=document.getElementById('f');
+  function sync(){
+    var send=document.getElementById('ra').checked;
+    document.querySelector('.route--a').classList.toggle('is-on',send);
+    document.querySelector('.route--b').classList.toggle('is-on',!send);
+    wrap.classList.toggle('drop--hid',!send);
+    file.disabled=!send;
+    btn.textContent = send ? 'Send the export' : 'Book the twenty minutes';
+  }
+  f.addEventListener('change',function(e){ if(e.target.name==='route') sync(); });
+  sync();
+})();
 
 /* ---------------------------------------------------------------------------
    SIGNATURE MOVE: the spread you cannot read.
