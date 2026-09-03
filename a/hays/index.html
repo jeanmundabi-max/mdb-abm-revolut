@@ -95,7 +95,8 @@
   .quote{border-left:3px solid var(--sc-accent);padding-left:20px;color:var(--sc-ink);font-weight:600}
   .quote .cite{display:block;margin-top:10px;font-size:.84rem;font-weight:400;color:var(--sc-ink-soft)}
   .promise{margin-top:26px;border:1px solid #23252B;border-radius:14px;padding:22px;background:var(--sc-surface)}
-  .promise p{font-size:1rem;line-height:1.55;color:#C3C8D0;margin:0 0 16px}
+  .promise{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .promise .pnote{font-size:.9rem;line-height:1.45;color:var(--sc-ink-soft);margin:0;max-width:34ch}
   .btn--sm{display:inline-block;padding:12px 18px;font-size:.94rem;text-decoration:none}
   .boxes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
   .boxes--3{grid-template-columns:repeat(3,1fr)}
@@ -168,15 +169,14 @@
         </div>
         <div class="col col--r">
           <p class="tag" data-sc-cue="0 1 0">Revolut Business &middot; for the treasury team at Hays plc</p>
-          <h1 class="lead" data-sc-cue="0 1 0" data-sc-rise="0">Every conversion had a rate.<br>Nobody placed that one.</h1>
-          <p class="quiet" data-sc-cue="0 1 0" data-sc-rise="0">Currency added &pound;14.9m to your net
-          fees this year, after taking &pound;23.1m off them last year. Nobody in the business traded
-          for either. This page shows where that money actually goes, using only figures Hays
-          published, and ends with one thing you can ask for.</p>
+          <h1 class="lead" data-sc-cue="0 1 0" data-sc-rise="0">Your FX spread,<br>measured, in 14 days.<br>No fee.</h1>
+          <p class="quiet" data-sc-cue="0 1 0" data-sc-rise="0">Send one month of your own conversions.
+          Every one is matched to the interbank rate for that day and that hour. You get the figure
+          in basis points and in pounds, with the workings. <b>If it comes back under 10 basis points
+          we say so in writing and there is nothing to sell you.</b></p>
           <div class="promise" data-sc-cue="0 1 0" data-sc-rise="0">
-            <p><b>The spread you actually paid, on one month of your own conversions, as a number.</b>
-            Two weeks. No fee. If it is too small to be worth a conversation the report says so.</p>
-            <a class="btn btn--sm" href="#join">See what comes back</a>
+            <a class="btn btn--sm" href="#join">Start the 14 days</a>
+            <p class="pnote">Or keep the file: twenty minutes on a screen share, nothing leaves your building.</p>
           </div>
         </div>
       </div>
@@ -285,6 +285,38 @@
         own published sensitivity is that each 1 cent movement in the euro is worth about
         &pound;3.9 million of net fees a year. The report replaces the second slider with the real
         number, taken from your own statements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5b · COST OF INACTION: the section the page was missing entirely. -->
+  <section class="sc-section">
+    <div class="sc-wrap">
+      <div class="sc-stack" data-sc-in data-sc-stagger="70">
+        <p class="tag">What another year of not knowing costs</p>
+        <h2 class="h2">It is not a one-off. It is a subscription you never signed.</h2>
+        <p class="p">A spread is not an event. It is charged on every conversion, every month,
+        and it renews itself without anyone deciding to renew it. <b>Whatever the figure is, the
+        cost of not knowing it is that figure multiplied by twelve, then by every year it stays
+        unmeasured.</b></p>
+        <div class="boxes">
+          <div class="box"><h3>It cannot appear</h3><p>It is inside a rate, not on a statement, so
+          there is no line item for anyone to question. It will never show up in a variance
+          analysis, a budget review or an audit. <b>Not knowing is the default state and nothing in
+          your reporting will ever change that.</b></p></div>
+          <div class="box"><h3>It compounds quietly</h3><p>Your net fees were &pound;905.5 million in
+          FY26 and your business spans Germany, the UK and Ireland, Australia and New Zealand, and
+          the rest of the world. Every one of those is a currency boundary money crosses in both
+          directions.</p></div>
+        </div>
+        <p class="p">And there is a second cost that is not money. <b>You cannot manage a number you
+        have never seen.</b> Your own report already tells the board that currency is a significant
+        Group sensitivity and that each 1 cent movement in the euro is worth about &pound;3.9 million
+        of net fees a year. That is the translational half, and it is measured. The transactional
+        half, the cash that actually left, has never been put in front of anyone.</p>
+        <p class="p quote">The question this answers is not "should we hedge". It is "what did the
+        conversions we already made actually cost", and today nobody in the building can answer it.
+        <span class="cite">Which is the whole reason this page exists</span></p>
       </div>
     </div>
   </section>
@@ -412,6 +444,27 @@
         <details><summary>Where did the figures about Hays come from?</summary><p>Your own
         preliminary report for FY26, published 20 August 2026, and the FY25 report before it. Named
         and dated beside every number, and nothing on this page is estimated or modelled.</p></details>
+        <details><summary>We already have a treasury policy and a panel of banks.</summary><p>Good,
+        and this does not replace either. A panel sets who you deal with and a policy sets what you
+        hedge. Neither tells you the spread you were charged on a given conversion, because that
+        number is inside the rate and nobody produces it.</p></details>
+        <details><summary>Will our bank not just tell us the spread?</summary><p>Ask them. Some will
+        quote a target spread in basis points, which is a policy rather than a measurement of what
+        you were actually charged. The report measures the executed rate against interbank at the
+        timestamp, which is a different question.</p></details>
+        <details><summary>How long does this take on our side?</summary><p>The time it takes to
+        export one month. If your treasury system produces a conversions report, that is enough and
+        you never have to send a statement at all.</p></details>
+        <details><summary>What if we do nothing with the answer?</summary><p>Then you have a number
+        you did not have, at no cost, and you know the size of something that was previously
+        invisible. That is a legitimate outcome and it is why there is no fee.</p></details>
+        <details><summary>Who is behind this page?</summary><p>It was produced independently as a
+        demonstration of one to one advertising. It is not affiliated with, endorsed by, or produced
+        on behalf of Revolut or Hays plc, and the offer on it was inferred by the operator from what
+        Revolut publishes rather than agreed by Revolut.</p></details>
+        <details><summary>What happens after the report?</summary><p>Nothing automatic. If the
+        number is large enough to be worth a conversation you decide whether to have one. If it is
+        not, the report says so and that is the end.</p></details>
       </div>
     </div>
   </section>
