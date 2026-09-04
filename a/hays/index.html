@@ -749,7 +749,7 @@
 
         <p class="when" data-sc-cue="0.09" data-sc-rise="0"><b>Fourteen days from the file
         landing</b>, not fourteen from a kickoff call. A file sent today puts the figure on the
-        desk on <b>17 September</b>. No fee, and no call before the number exists.</p>
+        desk on <b id="d14">17 September</b>. No fee, and no call before the number exists.</p>
 
         <form class="form" data-sc-cue="0.1" data-sc-rise="0" id="joinform"
               onsubmit="event.preventDefault();document.getElementById('sent').hidden=false;">
@@ -805,6 +805,14 @@
 <script src="scrollcraft.js"></script>
 <script>
 ScrollCraft.mount(document.body);
+
+/* A date written into a static page is wrong the next morning. This one is arithmetic,
+   so the page does the arithmetic: fourteen days from whenever the reader is standing. */
+(function(){
+  var el=document.getElementById('d14'); if(!el) return;
+  var d=new Date(); d.setDate(d.getDate()+14);
+  el.textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long'});
+})();
 
 /* The route decides the button. Point 1 of the close rebuild: a button that says
    "send your statements" to someone who chose the screen share is a button that lies. */
